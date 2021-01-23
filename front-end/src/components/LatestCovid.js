@@ -1,31 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 
 export default function LatestCovid() {
 
     const getData = async ( queries ) => {
-
         const endpoint = 'https://api.coronavirus.data.gov.uk/v1/data';
-    
         const { data, status, statusText } = await axios.get(endpoint, { 
             params: queries,
             timeout: 10000 
         });
-    
         if ( status >= 400 )
             throw new Error(statusText);
-    
         return data
-    
     };  // getData
     
     
     const latestCovid = async () => {
-    
         const
             AreaType = "nation",
             AreaName = "england";
-    
         const
             filters = [
                 `areaType=${ AreaType }`,
@@ -44,7 +37,6 @@ export default function LatestCovid() {
                     cumulative: "cumDeathsByDeathDate"
                 }
             };
-    
         const
             apiParams = {
                 filters: filters.join(";"),
@@ -62,7 +54,7 @@ export default function LatestCovid() {
     return (
         <div>
             <button onClick={latestCovid}>Fetch</button>
-            
+
         </div>
     )
 }

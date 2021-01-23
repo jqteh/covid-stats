@@ -69,5 +69,5 @@ data.pop('yorkshire and the humber')
 
 print(data.keys())
 
-with open('data/data_merged_regions.text', 'w') as file:
+with open('data/data_merged_regions.txt', 'w') as file:
     json.dump(data, file)

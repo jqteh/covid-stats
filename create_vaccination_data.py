@@ -1,5 +1,6 @@
 import pandas as pd 
 import pprint
+import json
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -23,3 +24,5 @@ for i, region in enumerate(regions):
         vacc_dict[region]['2021'+'-'+date[2:]+'-'+date[0:2]]['cumVaccinesGiven'] = int(vacc_df.iloc[i][f'{date}_cum'].replace(',', ''))
 
 pp.pprint(vacc_dict)
+with open("data/vacc_json.txt", "w") as f:
+    json.dump(vacc_dict, f)

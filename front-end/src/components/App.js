@@ -10,7 +10,8 @@ import SidebarContent from './SidebarContent';
 
 function App() {
 
-  const [sideBarOpen, setSideBarOpen] = useState(false)
+  const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [region, setRegion] = useState("East of England");
 
   function showPanel() {
     setSideBarOpen(true);
@@ -20,17 +21,23 @@ function App() {
     setSideBarOpen(false);
   }
 
+  function changeRegion(place) {
+    setRegion(place);
+  }
+
   return (
     <div className="App">
         <Sidebar
-          sidebar={<SidebarContent onPress={closePanel}/>}
+          sidebar={<SidebarContent onPress={closePanel} onChangeRegion={changeRegion}/>}
           open={sideBarOpen}
           styles={{ sidebar: { background: "#1F1B2E" } }}
           pullRight={true}
         />
       <Header onPress={showPanel} />
       <div className="panel-box">
-        <VacRate />
+        <VacRate 
+          region={region}
+        />
         <InfRate />
         <Hospital />
       </div>

@@ -27,9 +27,7 @@ for j in range(len(AREA_NAME_NHSREGION)):
     structure = {
         "date": "date",
         "name": "areaName",
-        "cases": {
-            "hospitalCases": "hospitalCases"
-        },
+        "hospitalCases": "hospitalCases",
         "admissions": {
             "newAdmissions": "newAdmissions",
             "cumAdmissions": "cumAdmissions", 
@@ -39,7 +37,7 @@ for j in range(len(AREA_NAME_NHSREGION)):
             "transmissionRateMin": "transmissionRateMin",
             "transmissionRateMax": "transmissionRateMax",
             "transmissionRateGrowthRateMin": "transmissionRateGrowthRateMin",
-            "transmissionRateGrowthRateMax": "transmissionRateGrowthRateMax",
+            "transmissionRateGrowthRateMax": "transmissionRateGrowthRateMax"
         },
         "covidOccupiedMVBeds":"covidOccupiedMVBeds"
     }
@@ -54,7 +52,7 @@ for j in range(len(AREA_NAME_NHSREGION)):
     if response.status_code >= 400:
         raise RuntimeError(f'Request failed: { response.text }')
         
-    Data_regions[AREA_NAME_REGION[j]] = response.json()   
+    Data_regions[AREA_NAME_NHSREGION[j]] = response.json()   
 
     Master_data = {}
 
@@ -63,12 +61,12 @@ for i in Data_regions.keys():
     for j in range(Data_regions[i]['length']):
     
         date = str(Data_regions[i]['data'][j]['date'])
-        cases = Data_regions[i]['data'][j]['cases']
+        hospitalCases = Data_regions[i]['data'][j]['hospitalCases']
         admissions = Data_regions[i]['data'][j]['admissions']
         transmission = Data_regions[i]['data'][j]['transmission']
         covidOccupiedMVBeds = Data_regions[i]['data'][j]['covidOccupiedMVBeds']  
 
-        Data_holder[date] = {'cases': cases, 'admissions': admissions, 'transmission': transmission, 'covidOccupiedMVBeds': covidOccupiedMVBeds}
+        Data_holder[date] = {'hospitalCases': hospitalCases, 'admissions': admissions, 'transmission': transmission, 'covidOccupiedMVBeds': covidOccupiedMVBeds}
     
     Master_data[i] = Data_holder
 

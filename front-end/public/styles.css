@@ -43,11 +43,6 @@ header p {
     width: 70%;
 }
 
-/* body {
-    background: #eee;
-    width: 100%;
-  } */
-
 .panel-box {
     display: flex;
     flex-direction: row;
@@ -92,6 +87,25 @@ header p {
     font-size: 3.5rem;
     color:crimson;
 }
+
+.sidebar-content {
+    width: 320px;
+    padding: 30px 30px;
+    position: relative;
+    text-align: center;
+}
+
+.sidebar-x {
+    position: relative;
+    margin-top: 15px; 
+    text-align: right;
+}
+
+.postcode {
+    margin-bottom: 30px;
+    height: 30px;
+}
+
 
 footer {
     position:fixed;

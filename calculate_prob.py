@@ -8,15 +8,16 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None
     # STEP 1: Initialisation of variables involved
 
     n = 100 # number of people in a location
-    m = 20 # number of people you come into contact with
-    dc = 15 # amount of time in direct contact with other people (average minutes)
-    lamb = 0.01 # time constant for exponential distribution.
+    m = 15 # number of people you come into contact with
+    dc = 20 # amount of time in direct contact with other people (average minutes)
+    lamb = 0.1 # time constant for exponential distribution.
     vacc_efficacy = [0, 0.60, 0.95] # efficacy of vaccine of not getting, getting 1 dose, and getting 2 doses
+    scale_factor = 4.5
 
     #################################################################################################
     # STEP 2: Calculate probability based on how people statistics - number of people around, infected
 
-    p = region_cases/region_pop # the prevalence of disease in that region
+    p = scale_factor*region_cases/region_pop # the prevalence of disease in that region
 
     ptr = 1-np.exp(-lamb*dc) # probability of transmission. The paper referred found the relationship to be exponential.
     term = 0
@@ -45,6 +46,6 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None
     return prob
 
 if __name__ == "__main__":
-    print(prob_of_infection(1000000, 100, age = 67))
+    print(prob_of_infection(1000000, 100, age = None))
 
 

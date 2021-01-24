@@ -95,10 +95,30 @@ def days_herd_immunity():
             
     return days_till_herd_immunity
         
-days_london = days_herd_immunity('London')
+def vaccinated_population():
+    with open('data/vacc_json.txt') as file:
+        vaccination_data = json.load(file)
+
+    with open('data/populations_json.txt') as file:
+        population_data = json.load(file)
+
+    locations = population_data.keys()
+    vaccinated_population_percentage = {}
+
+    for i in locations:
+        population = population_data[i]
+        date = list(vaccination_data[i].keys())
+        vaccinated_population = vaccination_data[i][date[-1]]['cumPeopleReceivedFirstDose']
+        percentage_vaccinated = 100*vaccinated_population/population
+
+        vaccinated_population_percentage[i] = percentage_vaccinated
+    
+    return vaccinated_population_percentage
 
 
-print(days_london)
+percentage = vaccinated_population()
+
+print(percentage)
 
 
 

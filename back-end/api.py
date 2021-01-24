@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import json
-from infection_vaccination_graph import historical_data, days_till_herd_immunity
+from infection_vaccination_graph import historical_data, days_till_herd_immunity, vaccinated_population
 
 app = Flask(__name__)
 
@@ -25,10 +25,12 @@ def api():
 
     # GET THE NUMBER OF DAYS TILL HERD IMMUNITY PER NHSREGION
     herd_imm_dict = days_till_herd_immunity()
+    percent_pop_vacc = vaccinated_population()
 
     # COMBINE THE TWO
     for region in herd_imm_dict.keys():
         nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
+        nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
 
     nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
 

@@ -1,27 +1,10 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 import json
 from infection_vaccination_graph import historical_data, days_herd_immunity, vaccinated_population
-from test_api import pythonify
 
-app = Flask(__name__)
-
-@app.route('/api', methods=['GET','POST'])
-def api():
-    # step 1
-    if request.method=="GET":
-        return jsonify('hello')
-    if request.method=="POST":
-        return jsonify({'message':'hello'})
-        data_frontend = request.get_json() # parses as json
-        with open("check_data.txt", "w") as file:
-            json.dump(data_frontend, file)
-
-        region = data_frontend["region"]
-        age = data_frontend["age"]
-        handwash = data_frontend["wash"]
-        # vacDose = data_frontend["vacDose"]
-
+def test_api():
     everything = {}
+    region = 'East of England'
 
     # GET THE HISTORICAL DATA PER NHSREGION
     n_days = 7 # default
@@ -44,11 +27,37 @@ def api():
     #     nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
     #     nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
 
-    nhsregion_dict['herd_imm_days'] = herd_imm_dict
+    nhsregion_dict['herd_imm_days'] = [herd_imm_dict]
     nhsregion_dict['percent_vacc'] = [percent_pop_vacc]
 
     # nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
-    nhsregion_dict = pythonify(nhsregion_dict)
 
     return nhsregion_dict
 
+def pythonify(json_data):
+    for key, value in json_data.items():
+        if isinstance(value, list):
+            value = [ pythonify(item) if isinstance(item, dict) else item for item in value ]
+        elif isinstance(value, dict):
+            value = pythonify(value)
+        # try:
+        #     newkey = int(key)
+        #     del json_data[key]
+        #     key = newkey
+        # except TypeError:
+        #     pass
+        json_data[key] = value
+    return json_data
+
+ans = test_api()
+ans = pythonify(ans)
+for key in ans.keys():
+    print(key)
+    try:
+        for k in ans[key].keys():
+            print(type(k))
+            # print(type(ans[key][k]))
+    except:
+        pass
+
+    print(type(ans[key]))

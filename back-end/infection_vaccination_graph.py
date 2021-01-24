@@ -91,7 +91,7 @@ def days_herd_immunity():
             x_threshold[0].append(population_data[i]*herd_immunity_threshold)
             days = regr.predict(x_threshold)
 
-            days_till_herd_immunity[i] = days
+            days_till_herd_immunity[i] = days.tolist()
             
     return days_till_herd_immunity
         

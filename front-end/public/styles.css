@@ -12,6 +12,8 @@ html {
     font-family: "Avenir-Roman", sans-serif;
 }
 
+/* Header */
+
 header {
     margin: auto;
     padding: 0 32px;
@@ -88,6 +90,7 @@ header p {
 
 .risk-box {
     position: relative;
+    width: 100%;
 }
 
 .infection-risk-text {
@@ -102,6 +105,19 @@ header p {
     margin-top: 20px;
     font-size: 3.5rem;
     color:crimson;
+}
+
+/* Latest Covid from region */
+
+.latest-covid {
+    position: absolute;
+    display: inline-block;
+    margin-left: 1210px;
+    margin-top: 10px;
+}
+
+.latest-covid h3 {
+    margin: 8px;
 }
 
 /* Side Bar */
@@ -123,6 +139,7 @@ header p {
     margin-bottom: 30px;
     height: 30px;
 }
+
 
 /* Footer */
 

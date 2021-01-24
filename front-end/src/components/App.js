@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import LatestCovid from './LatestCovid' //Console logs the latest Covid data from coronavirus.data.gov.uk (England for now)
@@ -12,7 +12,6 @@ function App() {
 
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [region, setRegion] = useState("East of England");
-  // const [bigRegion, setBigRegion] = useState("East of England");
 
   function showPanel() {
     setSideBarOpen(true);
@@ -27,6 +26,14 @@ function App() {
     
   }
 
+  useEffect(()=>{
+    fetch('/api').then(
+      res => res.json()
+    ).then(
+      data => console.log(data)
+    )
+  },[])
+
   return (
     <div className="App">
         <Sidebar
@@ -39,15 +46,13 @@ function App() {
       <div className="panel-box">
         <VacRate region={region}/>
         <InfRate region={region}/>
-        <Hospital 
-          region={region}
-        />
+        <Hospital region={region}/>
       </div>
       <div className="risk-box">
         <h2 className="infection-risk-text">Your current risk of infection is:</h2>
         <h1 className="infection-risk">X%</h1>
+        <LatestCovid region={region}/> 
       </div>
-      {/* <LatestCovid/>  */}
       <Footer />
     </div>
   );

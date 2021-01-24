@@ -103,6 +103,7 @@ def vaccinated_population():
         population_data = json.load(file)
 
     locations = population_data.keys()
+    # print(locations)
     vaccinated_population_percentage = {}
 
     for i in locations:
@@ -118,7 +119,7 @@ def vaccinated_population():
 
 percentage = vaccinated_population()
 
-print(percentage)
+# print(percentage)
 
 
 

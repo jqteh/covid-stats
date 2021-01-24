@@ -7,11 +7,8 @@ app = Flask(__name__)
 @app.route('/api', methods=['GET','POST'])
 def api():
     # step 1
-    # if request.method=="GET":
-    #     return jsonify('hello')
     if request.method=="POST":
         data_frontend = request.get_json() # parses as json
-        # return jsonify(data_frontend)
         region = data_frontend["region"]
         age = data_frontend["age"]
         handwash = data_frontend["wash"]
@@ -21,18 +18,29 @@ def api():
 
     # GET THE HISTORICAL DATA PER NHSREGION
     n_days = 7 # default
-    nhsregion_dict = historical_data(n_days, region)
+    nhsregion_dict = historical_data(n_days, region) # for a single region
+
+  #  print('0')
+  #  print(nhsregion_dict.keys())
 
     # GET THE NUMBER OF DAYS TILL HERD IMMUNITY PER NHSREGION
     herd_imm_dict = days_herd_immunity()
+    herd_imm_dict = herd_imm_dict[region]
+    #print('1')
+   # print(herd_imm_dict)
+
     percent_pop_vacc = vaccinated_population()
+    percent_pop_vacc = percent_pop_vacc[region]
 
     # COMBINE THE TWO
-    for region in herd_imm_dict.keys():
-        nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
-        nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
+    # for region in herd_imm_dict.keys():
+    #     nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
+    #     nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
 
-    nhsregion_dict = jsonify(nhsregion_dict, indent = 4)
+    nhsregion_dict['herd_imm_days'] = herd_imm_dict
+    nhsregion_dict['percent_vacc'] = percent_pop_vacc
+
+    # nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
 
     return nhsregion_dict
     

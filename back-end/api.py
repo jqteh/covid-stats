@@ -8,12 +8,7 @@ app = Flask(__name__)
 def api():
     # step 1
     if request.method=="GET":
-<<<<<<< HEAD
-        return 'hello'
-
-=======
         return jsonify('hello')
->>>>>>> 0147cb76aeb393dbaa69623b371283813c59775b
     if request.method=="POST":
         return jsonify({'message':'hello'})
         data_frontend = request.get_json() # parses as json
@@ -49,7 +44,7 @@ def api():
     #     nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
 
     nhsregion_dict['herd_imm_days'] = herd_imm_dict
-    nhsregion_dict['percent_vacc'] = percent_pop_vacc
+    nhsregion_dict['percent_vacc'] = [percent_pop_vacc]
 
     # nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
 

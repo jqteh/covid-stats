@@ -1,7 +1,7 @@
 from scipy.special import comb
 import numpy as np
 
-def prob_of_infection(region_pop, region_cases, region_pop_vacc, age = None, vacc = None):
+def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None, vacc = None):
     # vacc - value either None, 0, 1 or 2 depending on number of doses
 
     #################################################################################################
@@ -10,7 +10,7 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc, age = None, vac
     n = 100 # number of people in a location
     m = 20 # number of people you come into contact with
     dc = 15 # amount of time in direct contact with other people (average minutes)
-    lamb = 0.001 # time constant for exponential distribution.
+    lamb = 0.01 # time constant for exponential distribution.
     vacc_efficacy = [0, 0.60, 0.95] # efficacy of vaccine of not getting, getting 1 dose, and getting 2 doses
 
     #################################################################################################
@@ -28,12 +28,12 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc, age = None, vac
     # Step 2.1: Account for vaccinations done in that NHS Region??
 
 
-
     #################################################################################################
     # STEP 3: Account for personal age
 
     if age!=None:
-        prob = prob # TODO
+        factor = np.exp(age/100) # TODO
+        prob = factor*prob 
 
     #################################################################################################
     # STEP 3: Account for personal vaccination status
@@ -45,6 +45,6 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc, age = None, vac
     return prob
 
 if __name__ == "__main__":
-    print(prob_of_infection(1000000, 100000))
+    print(prob_of_infection(1000000, 100, age = 67))
 
 

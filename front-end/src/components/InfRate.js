@@ -7,7 +7,7 @@ export default function InfRate(props) {
             <div className="inf-rate">
                 <h3>The virus is becoming more infectious, the following is a graph on the infection rate in {props.region}</h3>
                 <VacGraph/>
-                <p>This means that X out of 10 people in {props.region} have been vaccinated.</p>
+                <p>Your risk of being infected with Covid-19 in {props.region} is 46%.</p>
             </div>
         </div>
     )

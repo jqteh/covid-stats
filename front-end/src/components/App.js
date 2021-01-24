@@ -16,6 +16,8 @@ function App() {
   const [region, setRegion] = useState("East of England");
   const [age, setAge] = useState(20);
   const [wash, setWash] = useState(3);
+  const [currentVac, setCurrentVac] = useState(0);
+  const [herdDays, setHerdDays] = useState(0)
 
   function showPanel() {
     setSideBarOpen(true);
@@ -47,20 +49,13 @@ function App() {
 
     axios.post('/api', toBackEnd)
     .then(function (response) {
-      console.log(response);
+      setCurrentVac(response.data["percent_vacc"][0]) 
+      setHerdDays(response.data["herd_imm_days"][0])
+      console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
-
-    // fetch('/api', {
-    //   method: 'POST',
-    //   body: toBackEnd
-    // }).then(
-    //   res => res.json()
-    // ).then(
-    //   data => console.log(data)
-    // );
 
     console.log(toBackEnd)
 
@@ -76,7 +71,7 @@ function App() {
       />
       <Header onPress={showPanel} />
       <div className="panel-box">
-        <VacRate region={region} />
+        <VacRate region={region} currentVac={currentVac} herdDays={herdDays}/>
         <InfRate region={region} />
         <Hospital region={region} />
       </div>
@@ -85,7 +80,7 @@ function App() {
         <h1 className="infection-risk">46%</h1>
         <LatestCovid region={region} />
       </div>
-      {/* <button onClick={() => { console.log("pressed") }}>check</button> */}
+      {/* <button onClick={() => { console.log(currentVac) }}>check</button> */}
       <Footer />
     </div>
   );

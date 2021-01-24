@@ -4,20 +4,20 @@ import { ResponsiveLine } from '@nivo/line'
 export default function VacGraph() {
 
     const data = [{
-        "id": "japan",
-        "color": "hsl(349, 70%, 50%)",
+        // "id": "japan",
+        // "color": "hsl(349, 70%, 50%)",
         "data": [
             {
                 "x": "27/11",
-                "y": 187
+                "y": 20
             },
             {
                 "x": "3/12",
-                "y": 192
+                "y": 40
             },
             {
                 "x": "10/12",
-                "y": 56
+                "y": 80
             },
             {
                 "x": "17/12",
@@ -41,7 +41,7 @@ export default function VacGraph() {
             },
             {
                 "x": "21/01",
-                "y": 147
+                "y": 180
             }
         ]
     }]

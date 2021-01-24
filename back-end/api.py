@@ -7,12 +7,11 @@ app = Flask(__name__)
 @app.route('/api', methods=['GET','POST'])
 def api():
     # step 1
-    if request.method=="GET":
-        return jsonify('hello')
+    # if request.method=="GET":
+    #     return jsonify('hello')
     if request.method=="POST":
-        return jsonify({'message':'hello'})
         data_frontend = request.get_json() # parses as json
-
+        # return jsonify(data_frontend)
         region = data_frontend["region"]
         age = data_frontend["age"]
         handwash = data_frontend["wash"]
@@ -33,7 +32,7 @@ def api():
         nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
         nhsregion_dict[region]['percent_vacc'] = percent_pop_vacc[region]
 
-    nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
+    nhsregion_dict = jsonify(nhsregion_dict, indent = 4)
 
     return nhsregion_dict
     

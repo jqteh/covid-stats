@@ -71,8 +71,6 @@ export default function LatestCovid(props) {
             setNewCases(result["data"][1]["cases"]["new"]);
             setNewDeaths(result["data"][1]["deaths"]["new"]);
         
-            console.log(JSON.stringify(newCases));
-        
         };  // main
         latestCovid();
     },[props.region, newCases])

@@ -10,14 +10,16 @@ export default function SidebarContent(props) {
     const [age, setAge] = useState(20)
     const [wash, setWash] = useState(3)
     const [vacDose, setVacDose] = useState(0)
-    const [region, setRegion] = useState("Cambridge")
+    const [region, setRegion] = useState("East of England")
 
     function setAgeValue(num){
         setAge(num);
+        props.onChangeAge(num);
     }
 
     function setWashValue(num){
         setWash(num);
+        props.onChangeWash(num);
     }
 
     function setVacDoseValue(value) {
@@ -27,7 +29,7 @@ export default function SidebarContent(props) {
 
     function setRegionValue(region) {
         setRegion(region);
-        props.onChangeRegion(region)
+        props.onChangeRegion(region);
     }
 
     return (

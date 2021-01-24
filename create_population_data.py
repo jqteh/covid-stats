@@ -20,3 +20,4 @@ print(populations)
 
 with open("data/populations_json.txt", "w") as f:
     json.dump(populations, f)
+

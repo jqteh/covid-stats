@@ -14,7 +14,12 @@ with open('data/collated_data_final.txt') as file:
 with open('data/vacc_json.txt') as file:
     vaccination_data = json.load(file)
 
+
+
 locations = collated_data.keys()
+
+print(locations)
+
 number_of_previous_days = 7
 cases_infection_scaling_factor = 4.0
 first_dose_protection = 0.48
@@ -31,6 +36,7 @@ for i in locations:
         list_cases_previous_dates.append(collated_data[i][j]['cases']['daily'])
         list_deaths_previous_dates.append(collated_data[i][j]['deaths']['newDeathsByDeathDate'])
 
+    plt.plot(previous_dates, list_cases_previous_dates[:], label = "cases")
+    plt.plot(previous_dates, list_deaths_previous_dates[:], label = 'deaths')
+    plt.show()
 
-plt.plot(previous_dates, list_cases_previous_dates)
-plt.show()

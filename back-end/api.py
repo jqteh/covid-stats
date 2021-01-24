@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import json
 from infection_vaccination_graph import historical_data, days_herd_immunity, vaccinated_population
 
@@ -8,8 +8,9 @@ app = Flask(__name__)
 def api():
     # step 1
     if request.method=="GET":
-        return 'hello'
+        return jsonify('hello')
     if request.method=="POST":
+        return jsonify({'message':'hello'})
         data_frontend = request.get_json() # parses as json
 
         region = data_frontend["region"]
@@ -35,3 +36,4 @@ def api():
     nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
 
     return nhsregion_dict
+    

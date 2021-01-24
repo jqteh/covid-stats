@@ -26,8 +26,9 @@ function App() {
     
   }
 
+
   useEffect(()=>{
-    fetch('/api').then(
+    fetch('/api',{method:'POST'}).then(
       res => res.json()
     ).then(
       data => console.log(data)

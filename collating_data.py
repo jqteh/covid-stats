@@ -33,10 +33,6 @@ for i in data_merged.keys():
             else:
                 pass       
 
-pp.pprint(data_merged.keys())
-pp.pprint(data_merged['london']['2021-01-22'])
-pp.pprint(data_merged['south east']['2021-01-20'])
-
 with open ('data/collated_data_final.txt', 'w') as f:
     json.dump(data_merged, f)
 

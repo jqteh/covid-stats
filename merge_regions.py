@@ -11,61 +11,61 @@ pp = pprint.PrettyPrinter(indent=4)
 
 # pp.pprint(data_regions.keys())
 
-data['midlands'] = {}
+data['Midlands'] = {}
 
-print(data['east midlands']['2021-01-22']['cases']['daily'])
+print(data['East Midlands']['2021-01-22']['cases']['daily'])
 
-print(len(data['west midlands']))
+print(len(data['West Midlands']))
 
-east_dates = data['east midlands'].keys()
-west_dates = data['west midlands'].keys()
+east_dates = data['East Midlands'].keys()
+west_dates = data['West Midlands'].keys()
 
 for date in east_dates:
     if date in west_dates:
-        data['midlands'][date] = {}
+        data['Midlands'][date] = {}
 
-        data['midlands'][date]['cases'] = {}
-        for case_type in data['east midlands'][date]['cases'].keys():
+        data['Midlands'][date]['cases'] = {}
+        for case_type in data['East Midlands'][date]['cases'].keys():
             try:
-                data['midlands'][date]['cases'][case_type] = data['east midlands'][date]['cases'][case_type] + data['west midlands'][date]['cases'][case_type]
+                data['Midlands'][date]['cases'][case_type] = data['East Midlands'][date]['cases'][case_type] + data['West Midlands'][date]['cases'][case_type]
             except:
-                data['midlands'][date]['cases'][case_type] = 0
+                data['Midlands'][date]['cases'][case_type] = 0
 
-        data['midlands'][date]['deaths'] = {}
-        for case_type in data['east midlands'][date]['deaths'].keys():
+        data['Midlands'][date]['deaths'] = {}
+        for case_type in data['East Midlands'][date]['deaths'].keys():
             try: 
-                data['midlands'][date]['deaths'][case_type] = data['east midlands'][date]['deaths'][case_type] + data['west midlands'][date]['deaths'][case_type]
+                data['Midlands'][date]['deaths'][case_type] = data['East Midlands'][date]['deaths'][case_type] + data['West Midlands'][date]['deaths'][case_type]
             except:
-                data['midlands'][date]['deaths'][case_type] = 0
+                data['Midlands'][date]['deaths'][case_type] = 0
                 
-data['north east and yorkshire'] = {}
+data['North East and Yorkshire'] = {}
 
-ne_dates = data['north east'].keys()
-yh_dates = data['yorkshire and the humber'].keys()
+ne_dates = data['North East'].keys()
+yh_dates = data['Yorkshire and the Humber'].keys()
 
 for date in ne_dates:
     if date in yh_dates:
-        data['north east and yorkshire'][date] = {}
+        data['North East and Yorkshire'][date] = {}
 
-        data['north east and yorkshire'][date]['cases'] = {}
-        for case_type in data['north east'][date]['cases'].keys():
+        data['North East and Yorkshire'][date]['cases'] = {}
+        for case_type in data['North East'][date]['cases'].keys():
             try:
-                data['north east and yorkshire'][date]['cases'][case_type] = data['north east'][date]['cases'][case_type] + data['yorkshire and the humber'][date]['cases'][case_type]
+                data['North East and Yorkshire'][date]['cases'][case_type] = data['North East'][date]['cases'][case_type] + data['Yorkshire and the Humber'][date]['cases'][case_type]
             except:
-                data['north east and yorkshire'][date]['cases'][case_type] = 0
+                data['North East and Yorkshire'][date]['cases'][case_type] = 0
 
 
-        data['north east and yorkshire'][date]['deaths'] = {}
-        for case_type in data['east midlands'][date]['deaths'].keys():
+        data['North East and Yorkshire'][date]['deaths'] = {}
+        for case_type in data['East Midlands'][date]['deaths'].keys():
             try:
-                data['north east and yorkshire'][date]['deaths'][case_type] = data['north east'][date]['deaths'][case_type] + data['yorkshire and the humber'][date]['deaths'][case_type]
+                data['North East and Yorkshire'][date]['deaths'][case_type] = data['North East'][date]['deaths'][case_type] + data['Yorkshire and the Humber'][date]['deaths'][case_type]
             except:
-                data['north east and yorkshire'][date]['deaths'][case_type] = 0
+                data['North East and Yorkshire'][date]['deaths'][case_type] = 0
 
-data.pop('east midlands')
-data.pop('west midlands')
-data.pop('north east')
-data.pop('yorkshire and the humber')
+data.pop('East Midlands')
+data.pop('West Midlands')
+data.pop('North East')
+data.pop('Yorkshire and the Humber')
 
 print(data.keys())
 

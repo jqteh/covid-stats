@@ -14,7 +14,8 @@ pop_NW = sum(NW)
 pop_SE = sum(SE)
 pop_SW = sum(SW)
 
-populations = {"East of England": pop_EoE, "London": pop_London, "Midlands": pop_Mid, "North East and Yorkshire": pop_NEandY, "North West": pop_NW, "South East": pop_SE, "South West": pop_SW}
+populations = {"East of England": pop_EoE, "London": pop_London, "Midlands": pop_Mid, "North East and Yorkshire": pop_NEandY, 
+               "North West": pop_NW, "South East": pop_SE, "South West": pop_SW}
 print(populations)
 
 with open("data/populations_json.txt", "w") as f:

@@ -6,11 +6,10 @@ from json import dumps
 ENDPOINT = "https://api.coronavirus.data.gov.uk/v1/data"
 AREA_TYPE = ['region', 'nhsRegion']
 
-AREA_NAME_REGION = ['london', 'east of england', 'east midlands', 'west midlands', 
-                    'north east', 'north west', 'south east', 'south west', 'yorkshire and the humber']
+AREA_NAME_REGION = ['London', 'East of England', 'East Midlands', 'West Midlands', 
+                    'North East', 'North West', 'South East', 'South West', 'Yorkshire and the Humber']
 
-AREA_NAME_NHSREGION = ['london', 'east of england', 'midlands', 'north east and yorkshire',
-                        'north west', 'south east', 'south west']                   
+AREA_NAME_NHSREGION = ['East of England', 'London', 'Midlands', 'North East and Yorkshire', 'North West', 'South East', 'South West']                  
 
 Data_regions = {}
 

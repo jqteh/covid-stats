@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, jsonify
 import json
 from infection_vaccination_graph import historical_data, days_herd_immunity, vaccinated_population
+from test_api import pythonify
 
 app = Flask(__name__)
 
@@ -43,6 +44,7 @@ def api():
     nhsregion_dict['percent_vacc'] = [percent_pop_vacc]
 
     # nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
+    nhsregion_dict = pythonify(nhsregion_dict)
 
     return nhsregion_dict
-    
+

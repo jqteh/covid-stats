@@ -10,6 +10,7 @@ export default function SidebarContent(props) {
     const [age, setAge] = useState(20)
     const [wash, setWash] = useState(3)
     const [vacDose, setVacDose] = useState(0)
+    const [region, setRegion] = useState("Cambridge")
 
     function setAgeValue(num){
         setAge(num);
@@ -22,6 +23,11 @@ export default function SidebarContent(props) {
     function setVacDoseValue(value) {
         const num = parseInt(value)
         setVacDose(num);
+    }
+
+    function setRegionValue(region) {
+        setRegion(region);
+        props.onChangeRegion(region)
     }
 
     return (
@@ -39,7 +45,9 @@ export default function SidebarContent(props) {
                 endValue={setAgeValue}
             />
             <p>What is the first 2 letters of your postcode? (e.g. CB)</p>
-            <Region/>
+            <Region
+                endValue={setRegionValue}
+            />
             <SliderComponent
                 title="How often do you wash your hands in a day?"
                 max="20"
@@ -51,7 +59,7 @@ export default function SidebarContent(props) {
                 endValue={setVacDoseValue}
             />
             <br/>
-            <button onClick={()=>{console.log(age, wash, vacDose)}}>check value</button>
+            <button onClick={()=>{console.log(age, wash, vacDose, region)}}>check value</button>
         </div>
     )
 }

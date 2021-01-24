@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
 
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error, r2_score
+
 def historical_data(n_days, region):
 
     with open('data/populations_json.txt') as file:
@@ -48,7 +53,52 @@ def historical_data(n_days, region):
 
     return {'historical_new_cases_dict' : historical_new_cases_dict[region], 'historical_estimated_new_infections_dict' : historical_estimated_new_infections_dict[region], 'historical_new_deaths_dict' : historical_new_deaths_dict[region], 'historical_hospital_cases' : historical_hospital_cases[region], 'historical_patients_on_ventalitors' : historical_patients_on_ventalitors[region]}
 
-data = historical_data(7, 'London')
+
+def days_herd_immunity(region):
+    with open('data/populations_json.txt') as file:
+        population_data = json.load(file)
+
+    with open('data/collated_data_final.txt') as file:
+        collated_data = json.load(file)
+
+    with open('data/vacc_json.txt') as file:
+        vaccination_data = json.load(file)
+
+    locations = vaccination_data.keys()
+    herd_immunity_threshold = 0.9
+
+    days_till_herd_immunity = {}
+
+    for i in locations:
+            dates = vaccination_data[i].keys()
+            previous_dates = list((dates))
+
+            vacc_number = []
+            day_number = []
+
+            for j, k in enumerate(previous_dates):
+
+                day_number.append(j)
+                vacc_number.append(vaccination_data[i][k]['cumPeopleReceivedFirstDose'])
+
+                x = np.array(vacc_number)
+                y = np.array(day_number)
+
+            regr = linear_model.LinearRegression()
+            regr.fit(x[:, None], y)
+
+            x_threshold = [[]]
+            x_threshold[0].append(population_data[i]*herd_immunity_threshold)
+            days = regr.predict(x_threshold)
+
+            days_till_herd_immunity[i] = days
+            
+    return days_till_herd_immunity[region]
+        
+days_london = days_herd_immunity('London')
+
+
+print(days_london)
 
 
 

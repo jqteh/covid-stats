@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import LatestCovid from './LatestCovid' //Console logs the latest Covid data from coronavirus.data.gov.uk (England for now)
@@ -25,6 +25,14 @@ function App() {
     setRegion(place);
     
   }
+
+  useEffect(()=>{
+    fetch('/api').then(
+      res => res.json()
+    ).then(
+      data => console.log(data)
+    )
+  },[])
 
   return (
     <div className="App">

@@ -43,6 +43,8 @@ header p {
     width: 70%;
 }
 
+/* Panels */
+
 .panel-box {
     display: flex;
     flex-direction: row;
@@ -66,9 +68,23 @@ header p {
 }
 
 .vac-rate h1 {
-    font-size: 7rem;
+    font-size: 5rem;
     margin: 0;
 }
+
+.vac-graph {
+    height:200px;
+    background-color: azure;
+    color: #000;
+    border-radius: 30px;
+}
+
+.hospital h1 {
+    font-size: 5rem;
+    margin: 0 auto;
+}
+
+/* Risk % */
 
 .risk-box {
     position: relative;
@@ -88,6 +104,8 @@ header p {
     color:crimson;
 }
 
+/* Side Bar */
+
 .sidebar-content {
     width: 320px;
     padding: 30px 30px;
@@ -106,6 +124,7 @@ header p {
     height: 30px;
 }
 
+/* Footer */
 
 footer {
     position:fixed;

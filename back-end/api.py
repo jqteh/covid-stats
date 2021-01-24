@@ -26,6 +26,7 @@ def api():
     # GET THE NUMBER OF DAYS TILL HERD IMMUNITY PER NHSREGION
     herd_imm_dict = days_till_herd_immunity()
 
+    # COMBINE THE TWO
     for region in herd_imm_dict.keys():
         nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
 

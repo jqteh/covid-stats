@@ -17,12 +17,18 @@ def api():
         handwash = data_frontend["wash"]
         # vacDose = data_frontend["vacDose"]
 
-    # step 2: need to extract the required things from that big dictionary
-    # need to send infection history (array), vaccination history (array) and risk of infection (int)
+    everything = {}
+
+    # GET THE HISTORICAL DATA PER NHSREGION
     n_days = 7 # default
     nhsregion_dict = historical_data(n_days, region)
 
-    # step 3: convert dictionary to JSON - is this needed?
-    nhsregion_json = json.dumps(nhsregion, indent = 4)
+    # GET THE NUMBER OF DAYS TILL HERD IMMUNITY PER NHSREGION
+    herd_imm_dict = ()
 
-    return nhsregion_json
+    for region in herd_imm_dict.keys():
+        nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]
+
+    nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
+
+    return nhsregion_dict

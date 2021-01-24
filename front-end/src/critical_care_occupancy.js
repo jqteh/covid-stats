@@ -31,7 +31,7 @@ const bedOccupancy = [{
          "Unoccupied": 109
       }
    ],
-   "SouthEast": [
+   "South East": [
       {
          "X.1": "Average Dec 2019",
          "Occupied": 383.9,
@@ -63,7 +63,7 @@ const bedOccupancy = [{
          "Unoccupied": 73
       }
    ],
-   "EastofEngland": [
+   "East of England": [
       {
          "X.1": "Average Dec 2019",
          "Occupied": 255,
@@ -95,7 +95,7 @@ const bedOccupancy = [{
          "Unoccupied": 94
       }
    ],
-   "SouthWest": [
+   "South West": [
       {
          "X.1": "Average Dec 2019",
          "Occupied": 252,
@@ -159,7 +159,7 @@ const bedOccupancy = [{
          "Unoccupied": 149
       }
    ],
-   "NorthEastandYorkshire": [
+   "North East": [
       {
          "X.1": "Average Dec 2019",
          "Occupied": 514,
@@ -191,7 +191,7 @@ const bedOccupancy = [{
          "Unoccupied": 187
       }
    ],
-   "NorthWest": [
+   "North West": [
       {
          "X.1": "Average Dec 2019",
          "Occupied": 402.6,

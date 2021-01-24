@@ -3,8 +3,6 @@ import VacGraph from './VacGraph';
 
 export default function VacRate(props) {
 
-
-
     return (
         <div className="panel">
             <div className="vac-rate">

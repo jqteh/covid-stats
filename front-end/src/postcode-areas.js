@@ -412,7 +412,7 @@ const postCodeAreas = [
  {
    "postcodeArea": "PE",
    "postcodeAreaName": "Peterborough",
-   "region": "EastEngland"
+   "region": "East of England"
  },
  {
    "postcodeArea": "PH",

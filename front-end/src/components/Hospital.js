@@ -13,7 +13,7 @@ export default function Hospital(props) {
     const bigRegions = ["London", "South East", "East of England", "South West", "Midlands","North East", "North West"];
     const london = ["Greater London"];
     const midlands = ["East Midlands", "West Midlands"]
-    const outside = ["Scotland", "Wales", "Non-geographic", "Channel Islands"]
+    // const outside = ["Scotland", "Wales", "Non-geographic", "Channel Islands"]
 
     if (london.includes(region)) {
         region = "London"

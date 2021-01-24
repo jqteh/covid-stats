@@ -54,7 +54,7 @@ def historical_data(n_days, region):
     return {'historical_new_cases_dict' : historical_new_cases_dict[region], 'historical_estimated_new_infections_dict' : historical_estimated_new_infections_dict[region], 'historical_new_deaths_dict' : historical_new_deaths_dict[region], 'historical_hospital_cases' : historical_hospital_cases[region], 'historical_patients_on_ventalitors' : historical_patients_on_ventalitors[region]}
 
 
-def days_herd_immunity(region):
+def days_herd_immunity():
     with open('data/populations_json.txt') as file:
         population_data = json.load(file)
 
@@ -93,7 +93,7 @@ def days_herd_immunity(region):
 
             days_till_herd_immunity[i] = days
             
-    return days_till_herd_immunity[region]
+    return days_till_herd_immunity
         
 days_london = days_herd_immunity('London')
 

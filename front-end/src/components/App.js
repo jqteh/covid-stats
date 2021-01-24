@@ -12,6 +12,7 @@ function App() {
 
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [region, setRegion] = useState("East of England");
+  const [bigRegion, setBigRegion] = useState("East of England")
 
   function showPanel() {
     setSideBarOpen(true);
@@ -35,11 +36,11 @@ function App() {
         />
       <Header onPress={showPanel} />
       <div className="panel-box">
-        <VacRate 
-          region={region}
+        <VacRate region={region}/>
+        <InfRate region={region}/>
+        <Hospital 
+          region={bigRegion}
         />
-        <InfRate />
-        <Hospital />
       </div>
       <div className="risk-box">
         <h2 className="infection-risk-text">Your current risk of infection is:</h2>

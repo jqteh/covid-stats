@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import json
-from infection_vaccination_graph import historical_data
+from infection_vaccination_graph import historical_data, days_till_herd_immunity
 
 app = Flask(__name__)
 
@@ -24,7 +24,7 @@ def api():
     nhsregion_dict = historical_data(n_days, region)
 
     # GET THE NUMBER OF DAYS TILL HERD IMMUNITY PER NHSREGION
-    herd_imm_dict = ()
+    herd_imm_dict = days_till_herd_immunity()
 
     for region in herd_imm_dict.keys():
         nhsregion_dict[region]['herd_imm_days'] = herd_imm_dict[region]

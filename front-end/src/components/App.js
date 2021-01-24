@@ -12,7 +12,6 @@ function App() {
 
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [region, setRegion] = useState("East of England");
-  // const [bigRegion, setBigRegion] = useState("East of England");
 
   function showPanel() {
     setSideBarOpen(true);
@@ -39,15 +38,13 @@ function App() {
       <div className="panel-box">
         <VacRate region={region}/>
         <InfRate region={region}/>
-        <Hospital 
-          region={region}
-        />
+        <Hospital region={region}/>
       </div>
       <div className="risk-box">
         <h2 className="infection-risk-text">Your current risk of infection is:</h2>
         <h1 className="infection-risk">X%</h1>
+        <LatestCovid region={region}/> 
       </div>
-      {/* <LatestCovid/>  */}
       <Footer />
     </div>
   );

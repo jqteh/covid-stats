@@ -7,11 +7,8 @@ app = Flask(__name__)
 @app.route('/api', methods=['GET','POST'])
 def api():
     # step 1
-<<<<<<< HEAD
-=======
     if request.method=="GET":
         return jsonify('hello')
->>>>>>> 0c27b4d4845eeb61017f186ae87cda6e02ba483c
     if request.method=="POST":
         data_frontend = request.get_json() # parses as json
         region = data_frontend["region"]

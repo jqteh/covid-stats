@@ -81,11 +81,11 @@ function App() {
         <Hospital region={region} />
       </div>
       <div className="risk-box">
-        <h2 className="infection-risk-text">Your current risk of infection is:</h2>
-        <h1 className="infection-risk">X%</h1>
+        <h2 className="infection-risk-text">Your risk of infection in 30 days is:</h2>
+        <h1 className="infection-risk">46%</h1>
         <LatestCovid region={region} />
       </div>
-      <button onClick={() => { console.log("pressed") }}>check</button>
+      {/* <button onClick={() => { console.log("pressed") }}>check</button> */}
       <Footer />
     </div>
   );

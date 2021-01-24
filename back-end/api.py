@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import json
 from infection_vaccination_graph import historical_data, days_herd_immunity, vaccinated_population
 
@@ -8,9 +8,14 @@ app = Flask(__name__)
 def api():
     # step 1
     if request.method=="GET":
+<<<<<<< HEAD
         return 'hello'
 
+=======
+        return jsonify('hello')
+>>>>>>> 0147cb76aeb393dbaa69623b371283813c59775b
     if request.method=="POST":
+        return jsonify({'message':'hello'})
         data_frontend = request.get_json() # parses as json
         with open("check_data.txt", "w") as file:
             json.dump(data_frontend, file)
@@ -49,3 +54,4 @@ def api():
     # nhsregion_dict = json.dumps(nhsregion_dict, indent = 4)
 
     return nhsregion_dict
+    

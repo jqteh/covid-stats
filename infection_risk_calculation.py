@@ -12,7 +12,7 @@ with open('data/vacc_json.txt') as file:
 locations = collated_data.keys()
 number_of_previous_days = 7
 cases_infection_scaling_factor = 4.0
-first_dose_protection = 0.35
+first_dose_protection = 0.48
 second_dose_protection = 0.05
 infection_risk_dict = {}
 
@@ -45,4 +45,7 @@ for i in locations:
                               'one_dose' : one_dose,
                               'two_doses' : two_doses
                               } 
+
+with open("data/infection_prediction_json.txt", "w") as f:
+    json.dump(infection_risk_dict, f)
 

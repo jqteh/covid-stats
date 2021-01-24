@@ -1,7 +1,9 @@
 from scipy.special import comb
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 
-def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None, vacc = None):
+def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None, vacc = None, length_days = None):
     # vacc - value either None, 0, 1 or 2 depending on number of doses
 
     #################################################################################################
@@ -42,10 +44,37 @@ def prob_of_infection(region_pop, region_cases, region_pop_vacc=None, age = None
     if vacc!=None:
         prob = (1-vacc_efficacy[vacc]) * prob # assumes vacc will be one of 0, 1 or 2
 
+    if length_days!=None:
+        prob = 1 - (1-prob)**length_days
 
     return prob
 
 if __name__ == "__main__":
-    print(prob_of_infection(1000000, 100, age = None))
+    print(prob_of_infection(1000000, 100, age = 50, length_days = 60))
+
+
+## graph of probability of infection against length of days, for several age groups ##
+
+days_list = list(range(1, 180, 1))
+ages_list = list(range(20, 90, 10))
+probs_dict = {}
+
+for i in ages_list:
+    probs_list = []
+    for j in days_list:
+        probs_list.append(prob_of_infection(1000000, 100, region_pop_vacc=None, age = i, vacc = None, length_days = j))
+    
+    probs_dict[i] = probs_list
+    plt.plot(days_list, probs_dict[i])
+
+plt.show()
+
+
+
+
+
+
+print(probs_dict)
+
 
 

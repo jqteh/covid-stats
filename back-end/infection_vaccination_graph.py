@@ -11,13 +11,13 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 def historical_data(n_days, region):
 
-    with open('/data/populations_json.txt') as file:
+    with open('data/populations_json.txt') as file:
         population_data = json.load(file)
 
-    with open('/data/collated_data_final.txt') as file:
+    with open('data/collated_data_final.txt') as file:
         collated_data = json.load(file)
 
-    with open('/data/vacc_json.txt') as file:
+    with open('data/vacc_json.txt') as file:
         vaccination_data = json.load(file)
 
     locations = collated_data.keys()
@@ -55,13 +55,13 @@ def historical_data(n_days, region):
 
 
 def days_herd_immunity():
-    with open('/data/populations_json.txt') as file:
+    with open('data/populations_json.txt') as file:
         population_data = json.load(file)
 
-    with open('/data/collated_data_final.txt') as file:
+    with open('data/collated_data_final.txt') as file:
         collated_data = json.load(file)
 
-    with open('/data/vacc_json.txt') as file:
+    with open('data/vacc_json.txt') as file:
         vaccination_data = json.load(file)
 
     locations = vaccination_data.keys()
@@ -96,10 +96,10 @@ def days_herd_immunity():
     return days_till_herd_immunity
         
 def vaccinated_population():
-    with open('/data/vacc_json.txt') as file:
+    with open('data/vacc_json.txt') as file:
         vaccination_data = json.load(file)
 
-    with open('/data/populations_json.txt') as file:
+    with open('data/populations_json.txt') as file:
         population_data = json.load(file)
 
     locations = population_data.keys()

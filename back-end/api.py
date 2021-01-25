@@ -3,7 +3,11 @@ import json
 from infection_vaccination_graph import historical_data, days_herd_immunity, vaccinated_population
 from test_api import pythonify
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='/')
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/api', methods=['GET','POST'])
 def api():

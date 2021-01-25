@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #222647;
+    width: 100%;
+    height: 100%;
+    color: azure;
+    position: absolute;
+}
+
+html {
+    font-family: "Avenir-Roman", sans-serif;
+}
+
+/* Header */
+
+header {
+    margin: auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header img {
+    width: 36px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+header h1 {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 2.6rem;
+}
+
+header p {
+    font-weight: lighter;
+    position: relative;
+    margin-left: 40px;
+    margin-top:0;
+    margin-bottom: 25px;
+}
+
+.header-text {
+    width: 70%;
+}
+
+/* Panels */
+
+.panel-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: auto 20px;
+    text-align: center;
+}
+
+.panel {
+    width: 420px;
+    height: 540px;
+    margin: auto;
+    padding: auto;
+    border-radius: 30px;
+    background-color: rgba(59, 54, 111, 0.78);
+    position: relative;
+}
+
+.vac-rate, .inf-rate, .hospital{
+    padding: 30px 50px;
+}
+
+.vac-rate h1 {
+    font-size: 5rem;
+    margin: 0;
+}
+
+.vac-graph {
+    height:200px;
+    background-color: azure;
+    color: #000;
+    border-radius: 30px;
+}
+
+.hospital h1 {
+    font-size: 5rem;
+    margin: 0 auto;
+}
+
+/* Risk % */
+
+.risk-box {
+    position: relative;
+    width: 100%;
+}
+
+.infection-risk-text {
+    margin-left: 50px;
+    margin-top: 30px;
+    position: absolute;
+}
+
+.infection-risk {
+    position: absolute;
+    margin-left: 450px;
+    margin-top: 20px;
+    font-size: 3.5rem;
+    color:crimson;
+}
+
+/* Latest Covid from region */
+
+.latest-covid {
+    position: absolute;
+    display: inline-block;
+    margin-left: 1210px;
+    margin-top: 10px;
+}
+
+.latest-covid h3 {
+    margin: 8px;
+}
+
+/* Side Bar */
+
+.sidebar-content {
+    width: 320px;
+    padding: 30px 30px;
+    position: relative;
+    text-align: center;
+}
+
+.sidebar-x {
+    position: relative;
+    margin-top: 15px; 
+    text-align: right;
+}
+
+.postcode {
+    margin-bottom: 30px;
+    height: 30px;
+}
+
+
+/* Footer */
+
+footer {
+    position:fixed;
+    text-align: center;
+    bottom: 20px;
+    width: 100%;
+    height: 2rem;
+}

@@ -18,6 +18,7 @@ function App() {
   const [wash, setWash] = useState(3);
   const [currentVac, setCurrentVac] = useState(0);
   const [herdDays, setHerdDays] = useState(0);
+  const [infRate, setInfRate] = useState({})
   const [infRisk, setInfRisk] = useState(46);
   const [vacDose, setVacDose] = useState(0);
 
@@ -67,6 +68,7 @@ function App() {
     .then(function (response) {
       setCurrentVac(response.data["percent_vacc"][0]) 
       setHerdDays(response.data["herd_imm_days"][0])
+      setInfRate(response.data["historical_new_cases_dict"]);
       console.log(response.data);
     })
     .catch(function (error) {
@@ -88,7 +90,7 @@ function App() {
       <Header onPress={showPanel} />
       <div className="panel-box">
         <VacRate region={region} currentVac={currentVac} herdDays={herdDays}/>
-        <InfRate region={region} />
+        <InfRate region={region} infRate={infRate}/>
         <Hospital region={region} />
       </div>
       <div className="risk-box">

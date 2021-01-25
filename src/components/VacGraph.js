@@ -1,11 +1,9 @@
 import React from 'react';
-import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveLine } from '@nivo/line';
 
 export default function VacGraph() {
 
     const data = [{
-        // "id": "japan",
-        // "color": "hsl(349, 70%, 50%)",
         "data": [
             {
                 "x": "27/11",

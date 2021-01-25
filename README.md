@@ -1,15 +1,30 @@
-# covid-stats
+# Notes
+1. Use yarn instead of npm
+```
+$ npm install --global yarn
+```
+2. Make Flask directory a subdirectory of React 
 
-## to run flask on its own
-1. (optional) activate virtual environment
-2. Specify flask starting file
+## Flask instructions
+1. If cloning, create own virtual environment and activate it
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
+2. Install python dotenv + create environmental variable and set starting file path
+```
+$ pip install flask python-dotenv
 
-Mac: 
+inside .flaskenv
+FLASK_APP=api.py
+FLASK_ENV=development
 ```
-export FLASK_APP=back-end/api.py
-``` 
-Windows: 
+3. Install flask and sklearn if not present
 ```
-set FLASK_APP=back-end/api.py
+$ pip install flask sklearn
 ```
-3. `flask run`
+4. Run flask either with native command or via package.json
+```
+$ flask run
+$ yarn start-api
+```
